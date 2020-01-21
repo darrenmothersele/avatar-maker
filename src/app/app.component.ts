@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { shuffle, get } from 'lodash';
+import { get } from 'lodash';
 import { catchError, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { stringify } from 'qs';
 import { BehaviorSubject, of, Subject } from 'rxjs';
@@ -205,7 +205,6 @@ export class AppComponent implements OnInit, OnDestroy {
             facepad: 2
           });
         })),
-        map(faces => shuffle(faces)),
         tap(() => this.isLoading = false),
         tap(() => this.setSelected(0))
       );
